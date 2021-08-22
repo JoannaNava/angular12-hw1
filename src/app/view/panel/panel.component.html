@@ -1,0 +1,88 @@
+<div class="form p-dir-col p-d-flex">
+  <div class="p-d-flex p-dir-row p-col-12">
+    <div>
+      <p-dropdown
+        placeholder="上層選單分類"
+        [options]="[]"
+        optionLabel="name"
+        optionValue="value"
+      ></p-dropdown>
+    </div>
+    <div>
+      <p-dropdown
+        placeholder="問題母分類"
+        [options]="[]"
+        optionLabel="name"
+        optionValue="value"
+      ></p-dropdown>
+    </div>
+    <div>
+      <p-dropdown
+        placeholder="問題子分類"
+        [options]="[]"
+        optionLabel="name"
+        optionValue="value"
+      ></p-dropdown>
+    </div>
+    <div>
+      <input type="text" placeholder="關鍵字" pInputText />
+    </div>
+    <div>
+      <button
+        pButton
+        type="button"
+        label="Search"
+        icon="pi pi-search"
+        iconPos="right"
+        class="p-button-primary"
+      ></button>
+    </div>
+    <div>
+      <button
+        pButton
+        type="button"
+        label="Create"
+        icon="pi pi-plus-circle"
+        iconPos="right"
+        class="p-button-warning"
+      ></button>
+    </div>
+  </div>
+</div>
+<div class="p-col-12">
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Header 1">
+      <ng-template pTemplate="content">
+        <p-accordion [multiple]="true">
+          <p-accordionTab header="Header 1">
+            <ng-template pTemplate="content">
+              <p-accordion [multiple]="true">
+                <p-accordionTab header="Header 1">
+                  <ng-template pTemplate="content">Body Content</ng-template>
+                </p-accordionTab>
+                <p-accordionTab header="Header 2"
+                  ><ng-template pTemplate="content">Body Content</ng-template>
+                </p-accordionTab>
+                <p-accordionTab header="Header 3"
+                  ><ng-template pTemplate="content">Body Content</ng-template>
+                </p-accordionTab>
+              </p-accordion>
+            </ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Header 2"
+            ><ng-template pTemplate="content">Body Content</ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Header 3"
+            ><ng-template pTemplate="content">Body Content</ng-template>
+          </p-accordionTab>
+        </p-accordion>
+      </ng-template>
+    </p-accordionTab>
+    <p-accordionTab header="Header 2"
+      ><ng-template pTemplate="content">Body Content</ng-template>
+    </p-accordionTab>
+    <p-accordionTab header="Header 3"
+      ><ng-template pTemplate="content">Body Content</ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

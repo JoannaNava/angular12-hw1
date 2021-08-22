@@ -1,7 +1,7 @@
 <div class="layout-wrapper">
   <div class="menu">
     <div class="p-d-flex p-align-center p-justify-center">
-      <h2>標題</h2>
+      <h3>標題</h3>
     </div>
     <p-divider></p-divider>
     <div>
@@ -11,10 +11,14 @@
   <div class="main">
     <div class="topbar">
       <div class="w-100 p-d-flex p-align-center p-justify-end">
-        <h2>員工姓名 (員工編號) 剩餘時間 09:42</h2>
+        <h3>員工姓名 (員工編號) 剩餘時間 09:42</h3>
       </div>
     </div>
-    <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>
-    <div></div>
+    <div>
+      <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>
+    </div>
+    <div class="border-page">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

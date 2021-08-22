@@ -19,20 +19,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  },
-  "paths": {
+    ],
+    "paths": {
     "@services/*": ["src/app/service/*", "src/app/service/api/*", "src/app/shared/*"],
     "@models/*": ["src/app/models/*"],
     "@interfaces/*": ["src/app/interfaces/*"],
     "@utils/*": ["src/app/shared/utils/*"],
     "@environments/*": ["src/environments/*"],
     "@shared/*": ["src/app/shared/*"],
+    "@view/*": ["src/app/view/*"],
+  },
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   },
 }

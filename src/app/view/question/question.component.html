@@ -1,0 +1,46 @@
+<div class="p-dir-col p-d-flex">
+  <div class="p-d-flex p-dir-row p-col-12">
+    <div class="p-col-4">
+      <p-dropdown
+        placeholder="上層選單分類"
+        [options]="[]"
+        optionLabel="name"
+        optionValue="value"
+        styleClass="w-100"
+      ></p-dropdown>
+    </div>
+    <div class="p-col-4">
+      <input class="w-100" type="text" pInputText />
+    </div>
+    <div class="p-col-2">
+      <button
+        pButton
+        type="button"
+        label="Search"
+        icon="pi pi-search"
+        iconPos="right"
+        class="p-button-primary"
+      ></button>
+    </div>
+  </div>
+  <div class="p-d-flex p-dir-col p-col-12">
+    <div class="p-col-12 my-0">
+      <h2>問題TOP5</h2>
+      <p-divider></p-divider>
+      <ul>
+        <li>問題1: XXXXXXXXXXXXXXXXX</li>
+        <li>問題2: XXXXXXXXXXXXXXXXX</li>
+        <li>問題3: XXXXXXXXXXXXXXXXX</li>
+        <li>問題4: XXXXXXXXXXXXXXXXX</li>
+        <li>問題5: XXXXXXXXXXXXXXXXX</li>
+      </ul>
+    </div>
+    <div class="p-col-12 my-0">
+      <p-accordion [multiple]="true">
+        <p-accordionTab header="Header 1"> Content 1 </p-accordionTab>
+        <p-accordionTab header="Header 2"> Content 2 </p-accordionTab>
+        <p-accordionTab header="Header 3"> Content 3 </p-accordionTab>
+      </p-accordion>
+    </div>
+  </div>
+</div>

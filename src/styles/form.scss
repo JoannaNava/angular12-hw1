@@ -1,0 +1,13 @@
+.datepicker-area {
+  display: flex;
+  flex-direction: row;
+  & div + div::before {
+    margin: 0px 10px;
+    content: "~";
+    position: relative;
+  }
+}
+
+.form > div.p-col-12.p-dir-row > div {
+  margin-right: 5px;
+}
