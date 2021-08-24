@@ -3,29 +3,37 @@
     <div>
       <p-dropdown
         placeholder="上層選單分類"
-        [options]="[]"
+        [options]="parentCategory"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterParent"
       ></p-dropdown>
     </div>
     <div>
       <p-dropdown
         placeholder="問題母分類"
-        [options]="[]"
+        [options]="category"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterCategory"
       ></p-dropdown>
     </div>
     <div>
       <p-dropdown
         placeholder="問題子分類"
-        [options]="[]"
+        [options]="childCategory"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterChild"
       ></p-dropdown>
     </div>
     <div>
-      <input type="text" placeholder="關鍵字" pInputText />
+      <input
+        type="text"
+        placeholder="關鍵字"
+        pInputText
+        [(ngModel)]="keyword"
+      />
     </div>
     <div>
       <p-dropdown
@@ -88,34 +96,32 @@
     >
       <ng-template pTemplate="header">
         <tr>
-          <th pSortableColumn="code">
-            功能 <p-sortIcon field="code"></p-sortIcon>
+          <th pSortableColumn="id">功能</th>
+          <th pSortableColumn="order">
+            順序 <p-sortIcon field="order"></p-sortIcon>
           </th>
-          <th pSortableColumn="name">
-            順序 <p-sortIcon field="name"></p-sortIcon>
+          <th pSortableColumn="title">
+            標題 <p-sortIcon field="title"></p-sortIcon>
           </th>
-          <th pSortableColumn="category">
-            標題 <p-sortIcon field="category"></p-sortIcon>
+          <th pSortableColumn="status">
+            審核狀態 <p-sortIcon field="status"></p-sortIcon>
           </th>
-          <th pSortableColumn="quantity">
-            審核狀態 <p-sortIcon field="quantity"></p-sortIcon>
+          <th pSortableColumn="startDate">
+            上架日期 <p-sortIcon field="startDate"></p-sortIcon>
           </th>
-          <th pSortableColumn="price">
-            上架日期 <p-sortIcon field="price"></p-sortIcon>
-          </th>
-          <th pSortableColumn="pricedate">
-            下架日期 <p-sortIcon field="pricedate"></p-sortIcon>
+          <th pSortableColumn="endDate">
+            下架日期 <p-sortIcon field="endDate"></p-sortIcon>
           </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product>
         <tr>
-          <td>{{ product.code }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.category }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price | currency: "USD" }}</td>
-          <td>{{ product.price | currency: "USD" }}</td>
+          <td></td>
+          <td>{{ product.order }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.status }}</td>
+          <td>{{ product.startDate | date: "yyyy-MM-dd hh:mm" }}</td>
+          <td>{{ product.endDate | date: "yyyy-MM-dd hh:mm" }}</td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

@@ -3,29 +3,37 @@
     <div>
       <p-dropdown
         placeholder="上層選單分類"
-        [options]="[]"
+        [options]="parentCategory"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterParent"
       ></p-dropdown>
     </div>
     <div>
       <p-dropdown
         placeholder="問題母分類"
-        [options]="[]"
+        [options]="category"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterCategory"
       ></p-dropdown>
     </div>
     <div>
       <p-dropdown
         placeholder="問題子分類"
-        [options]="[]"
+        [options]="childCategory"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
+        [(ngModel)]="filterChild"
       ></p-dropdown>
     </div>
     <div>
-      <input type="text" placeholder="關鍵字" pInputText />
+      <input
+        type="text"
+        placeholder="關鍵字"
+        [(ngModel)]="keyword"
+        pInputText
+      />
     </div>
     <div>
       <button
@@ -35,6 +43,7 @@
         icon="pi pi-search"
         iconPos="right"
         class="p-button-primary"
+        (click)="search()"
       ></button>
     </div>
     <div>
@@ -51,38 +60,43 @@
 </div>
 <div class="p-col-12">
   <p-accordion [multiple]="true">
-    <p-accordionTab header="Header 1">
+    <p-accordionTab
+      *ngFor="let item of filterMenu"
+      [header]="item.name"
+      [selected]="item.selected"
+    >
       <ng-template pTemplate="content">
         <p-accordion [multiple]="true">
-          <p-accordionTab header="Header 1">
+          <p-accordionTab
+            *ngFor="let child of item.child"
+            [header]="child.category"
+            [selected]="false"
+          >
             <ng-template pTemplate="content">
+              <div class="p-col-12 mx-0">
+                <p>
+                  Question: {{ child.question }}<br />
+                  Answer: {{ child.ans }}
+                </p>
+              </div>
               <p-accordion [multiple]="true">
-                <p-accordionTab header="Header 1">
-                  <ng-template pTemplate="content">Body Content</ng-template>
-                </p-accordionTab>
-                <p-accordionTab header="Header 2"
-                  ><ng-template pTemplate="content">Body Content</ng-template>
-                </p-accordionTab>
-                <p-accordionTab header="Header 3"
-                  ><ng-template pTemplate="content">Body Content</ng-template>
+                <p-accordionTab
+                  *ngFor="let childCategory of child.child"
+                  [header]="childCategory.child_category"
+                  [selected]="false"
+                >
+                  <ng-template pTemplate="content">
+                    <p>
+                      Question: {{ childCategory.child_question }}<br />
+                      Answer: {{ childCategory.child_answer }}
+                    </p>
+                  </ng-template>
                 </p-accordionTab>
               </p-accordion>
             </ng-template>
           </p-accordionTab>
-          <p-accordionTab header="Header 2"
-            ><ng-template pTemplate="content">Body Content</ng-template>
-          </p-accordionTab>
-          <p-accordionTab header="Header 3"
-            ><ng-template pTemplate="content">Body Content</ng-template>
-          </p-accordionTab>
         </p-accordion>
       </ng-template>
-    </p-accordionTab>
-    <p-accordionTab header="Header 2"
-      ><ng-template pTemplate="content">Body Content</ng-template>
-    </p-accordionTab>
-    <p-accordionTab header="Header 3"
-      ><ng-template pTemplate="content">Body Content</ng-template>
     </p-accordionTab>
   </p-accordion>
 </div>

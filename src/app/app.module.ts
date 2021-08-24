@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuestionComponent } from '@view/question/question.component';
 import { TableComponent } from '@view/table/table.component';
 import { PanelComponent } from '@view/panel/panel.component';
-
 @NgModule({
   declarations: [
     AppComponent,

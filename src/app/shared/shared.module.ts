@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { AccordionModule } from 'primeng/accordion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [LayoutComponent],
   imports: [
@@ -25,6 +26,8 @@ import { AccordionModule } from 'primeng/accordion';
     ButtonModule,
     CalendarModule,
     AccordionModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     DropdownModule,
@@ -37,6 +40,8 @@ import { AccordionModule } from 'primeng/accordion';
     ButtonModule,
     CalendarModule,
     AccordionModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

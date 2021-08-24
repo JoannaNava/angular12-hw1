@@ -19,20 +19,24 @@ export class LayoutComponent implements OnInit {
   constructor() {
     this.items = this.items = [
       {
-        label: 'File',
+        label: 'Homework',
         icon: 'pi pi-pw pi-file',
         items: [
           {
-            label: 'New',
+            label: 'Table',
             icon: 'pi pi-fw pi-plus',
-            items: [
-              { label: 'User', icon: 'pi pi-fw pi-user-plus' },
-              { label: 'Filter', icon: 'pi pi-fw pi-filter' },
-            ],
+            routerLink: '/table',
           },
-          { label: 'Open', icon: 'pi pi-fw pi-external-link' },
-          { separator: true },
-          { label: 'Quit', icon: 'pi pi-fw pi-times' },
+          {
+            label: 'Panel',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: '/panel',
+          },
+          {
+            label: 'Question',
+            icon: 'pi pi-fw pi-times',
+            routerLink: '/question',
+          },
         ],
       },
       {
