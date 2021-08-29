@@ -38,16 +38,16 @@
     <div>
       <p-dropdown
         placeholder="審核狀態"
-        [options]="[]"
+        [options]="auditStatus"
         optionLabel="name"
-        optionValue="value"
+        optionValue="name"
       ></p-dropdown>
     </div>
   </div>
 
   <div class="p-dir-row p-d-flex p-col-12">
     <div class="datepicker-area">
-      <div>
+      <div class="date-area">
         <p-calendar
           [showIcon]="true"
           dateFormat="yy/mm/dd"
@@ -55,7 +55,7 @@
           placeholder="yyyy/mm/dd"
         ></p-calendar>
       </div>
-      <div>
+      <div class="date-area">
         <p-calendar
           [showIcon]="true"
           dateFormat="yy/mm/dd"
@@ -71,7 +71,7 @@
         label="Search"
         icon="pi pi-search"
         iconPos="right"
-        class="p-button-primary"
+        class="p-button-primary p-button-outlined"
       ></button>
     </div>
     <div>
@@ -81,7 +81,8 @@
         label="Create"
         icon="pi pi-plus-circle"
         iconPos="right"
-        class="p-button-warning"
+        class="p-button-warning p-button-outlined"
+        (click)="createItem()"
       ></button>
     </div>
   </div>
@@ -114,9 +115,27 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-product>
+      <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
         <tr>
-          <td></td>
+          <td>
+            <div class="func-btn">
+              <button
+                pButton
+                type="button"
+                class="p-button-outlined p-button-rounded p-button-success"
+                icon="pi pi-pencil"
+                style="margin-right: 10px"
+                (click)="updateItem(product, rowIndex)"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                class="p-button-outlined p-button-rounded p-button-danger"
+                (click)="deleteData(rowIndex)"
+              ></button>
+            </div>
+          </td>
           <td>{{ product.order }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.status }}</td>

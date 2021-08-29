@@ -11,7 +11,7 @@
       ></p-dropdown>
     </div>
     <div class="p-col-4">
-      <input class="w-100" type="text" pInputText />
+      <input class="w-100" type="text" pInputText [(ngModel)]="keyword" />
     </div>
     <div class="p-col-2">
       <button
@@ -20,25 +20,26 @@
         label="Search"
         icon="pi pi-search"
         iconPos="right"
-        class="p-button-primary"
+        class="p-button-primary p-button-outlined"
+        (click)="search()"
       ></button>
     </div>
   </div>
   <div class="p-d-flex p-dir-col p-col-12">
     <div class="p-col-12 my-0">
-      <h2>問題TOP5</h2>
+      <h2>問題 TOP5</h2>
       <p-divider></p-divider>
       <ul>
         <li *ngFor="let item of data | slice: 0:5; let i = index">
-          問題{{ i + 1 }}: {{ item.question }}
+          問題 {{ i + 1 }}: {{ item.question }}
         </li>
       </ul>
     </div>
     <div class="p-col-12 my-0">
       <p-accordion [multiple]="true">
-        <p-accordionTab *ngFor="let item of data" [header]="item.question">{{
-          item.answer
-        }}</p-accordionTab>
+        <p-accordionTab *ngFor="let item of filterData" [header]="item.question"
+          >{{ item.answer }} ({{ item.category }})</p-accordionTab
+        >
       </p-accordion>
     </div>
   </div>

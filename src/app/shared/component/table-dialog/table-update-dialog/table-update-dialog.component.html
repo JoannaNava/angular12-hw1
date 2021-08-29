@@ -1,0 +1,78 @@
+<div class="form p-dir-col p-d-flex">
+  <div class="p-d-flex p-dir-col p-col-12">
+    <div>
+      <label>順序</label>
+      <p-inputNumber
+        placeholder="順序"
+        [disabled]="true"
+        [(ngModel)]="data.order"
+      ></p-inputNumber>
+    </div>
+    <div>
+      <label>標題</label>
+      <input
+        type="text"
+        placeholder="標題"
+        pInputText
+        [(ngModel)]="data.title"
+      />
+    </div>
+    <div>
+      <label>審核狀態</label>
+      <p-dropdown
+        placeholder="審核狀態"
+        [options]="auditStatus"
+        optionLabel="name"
+        optionValue="name"
+        [(ngModel)]="data.status"
+      ></p-dropdown>
+    </div>
+    <div>
+      <label>起始日期</label>
+      <p-calendar
+        [showIcon]="true"
+        dateFormat="yy/mm/dd"
+        [showButtonBar]="true"
+        placeholder="yyyy/mm/dd"
+        appendTo="body"
+        [(ngModel)]="data.startDate"
+      ></p-calendar>
+    </div>
+    <div>
+      <label>結束日期</label>
+      <p-calendar
+        [showIcon]="true"
+        dateFormat="yy/mm/dd"
+        [showButtonBar]="true"
+        placeholder="yyyy/mm/dd"
+        appendTo="body"
+        [(ngModel)]="data.endDate"
+      ></p-calendar>
+    </div>
+  </div>
+  <p-divider></p-divider>
+  <div class="p-dir-row p-d-flex p-col-12 p-justify-end">
+    <div>
+      <button
+        pButton
+        type="button"
+        label="取消"
+        icon="pi pi-times"
+        iconPos="right"
+        class="p-button-primary p-button-outlined"
+        (click)="close()"
+      ></button>
+    </div>
+    <div>
+      <button
+        pButton
+        type="button"
+        label="確認"
+        icon="pi pi-check"
+        iconPos="right"
+        class="p-button-success p-button-outlined"
+        (click)="confirm()"
+      ></button>
+    </div>
+  </div>
+</div>

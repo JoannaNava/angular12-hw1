@@ -12,8 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { AccordionModule } from 'primeng/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { TableUpdateDialogComponent } from './component/table-dialog/table-update-dialog/table-update-dialog.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [LayoutComponent, TableUpdateDialogComponent],
   imports: [
     CommonModule,
     DropdownModule,
@@ -28,6 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionModule,
     FormsModule,
     ReactiveFormsModule,
+    DynamicDialogModule,
+    InputNumberModule,
   ],
   exports: [
     DropdownModule,
@@ -42,6 +47,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionModule,
     FormsModule,
     ReactiveFormsModule,
+    DynamicDialogModule,
+    InputNumberModule,
   ],
+  providers: [DialogService],
 })
 export class SharedModule {}

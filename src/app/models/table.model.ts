@@ -6,3 +6,13 @@ export interface TableMenu {
   startDate: string;
   endDate: string;
 }
+
+export class TableMenu {
+  id = 0;
+  order = 0;
+  title = '';
+  status = '';
+  startDate = new Date().toLocaleDateString();
+  endDate = new Date().toLocaleDateString();
+  constructor() {}
+}
