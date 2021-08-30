@@ -13,14 +13,26 @@ const routes: Routes = [
       {
         path: 'table',
         component: TableComponent,
+        data: {
+          label: 'Table',
+          url: '/table',
+        },
       },
       {
         path: 'question',
         component: QuestionComponent,
+        data: {
+          label: 'Question',
+          url: '/question',
+        },
       },
       {
         path: 'panel',
         component: PanelComponent,
+        data: {
+          label: 'Panel',
+          url: '/panel',
+        },
       },
       {
         path: '**',

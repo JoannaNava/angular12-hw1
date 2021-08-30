@@ -30,3 +30,41 @@ body {
   text-align: center;
 }
 
+.breadcrumb {
+  width: 100%;
+  background: #343e4d;
+  border: 0 none;
+  border-radius: 4px;
+  padding: 1rem;
+  span + span::before {
+      margin: 0px 10px;
+      content: "/";
+      position: relative;
+    }
+
+  span:hover {
+    color: #8dd0ff;
+  }
+  span {
+    color: #4cc8db;
+  }
+}
+
+// scroll bar
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}

@@ -1,5 +1,5 @@
 <div class="layout-wrapper">
-  <div class="menu">
+  <div [class.menu]="isMenuOpen" [class.menu-hide]="!isMenuOpen">
     <div class="p-d-flex p-align-center p-justify-center">
       <h3>標題</h3>
     </div>
@@ -8,15 +8,26 @@
       <p-panelMenu styleClass="w-100" [model]="items"></p-panelMenu>
     </div>
   </div>
-  <div class="main">
+  <div [class.main]="isMenuOpen" [class.main-extend]="!isMenuOpen">
     <div class="topbar">
-      <div class="w-100 p-d-flex p-align-center p-justify-end">
+      <div class="w-100 p-d-flex p-align-center p-justify-between">
+        <button
+        pButton
+        type="button"
+        class="p-button-outlined p-button-primary"
+        icon="pi pi-bars"
+        (click)="isMenuOpen = !isMenuOpen"
+      ></button>
         <h3>員工姓名 (員工編號) 剩餘時間 09:42</h3>
       </div>
     </div>
-    <div>
-      <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>
+
+    <div class="breadcrumb p-d-flex p-dir-row p-justify-start">
+      <span *ngFor="let item of breadcrumbItems" [routerLink]="item.url">{{
+        item.label
+      }}</span>
     </div>
+    <!-- <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb> -->
     <div class="border-page">
       <router-outlet></router-outlet>
     </div>

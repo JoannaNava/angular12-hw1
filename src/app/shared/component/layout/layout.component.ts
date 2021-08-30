@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/compiler/src/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { filter } from 'rxjs/operators';
+import { MenuService } from '@services/menu.service';
+import { ChildMenu, Menu } from '@models/menu.model';
 
 @Component({
   selector: 'app-layout',
@@ -16,8 +21,45 @@ export class LayoutComponent implements OnInit {
   ];
   items: MenuItem[] = [];
   breadcrumbItems: MenuItem[] = [];
-  constructor() {
-    this.items = this.items = [
+  isMenuOpen = true;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef,
+    private menuService: MenuService
+  ) {
+    this.breadcrumbItems = [{ label: 'Home', url: '/' }];
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        if (event) {
+          console.log(event);
+          console.log(this.route.snapshot.routeConfig);
+
+          const { children } = this.route.snapshot.routeConfig as Route;
+          if (children) {
+            const target = children.filter((item) => {
+              if ((item as any)?.data) {
+                return (item as any)?.data.url === event.url;
+              } else {
+                return false;
+              }
+            });
+
+            if (target.length === 0) {
+              this.breadcrumbItems = [
+                { label: 'Home', url: '/' },
+                { label: 'Table', url: '/table' },
+              ];
+              return;
+            }
+            const [activeChild] = target;
+            const { url, label } = (activeChild as any).data;
+            this.breadcrumbItems.splice(1, 1, { label, url });
+          }
+        }
+      });
+    this.items = [
       {
         label: 'Homework',
         icon: 'pi pi-pw pi-file',
@@ -96,20 +138,60 @@ export class LayoutComponent implements OnInit {
       },
     ];
 
-    this.breadcrumbItems = [
-      { label: 'Categories' },
-      { label: 'Sports' },
-      { label: 'Football' },
-      { label: 'Countries' },
-      { label: 'Spain' },
-      { label: 'F.C. Barcelona' },
-      { label: 'Squad' },
-      {
-        label: 'Lionel Messi',
-        url: 'https://en.wikipedia.org/wiki/Lionel_Messi',
-      },
-    ];
+    // this.breadcrumbItems = [
+    //   { label: 'Categories' },
+    //   { label: 'Sports' },
+    //   { label: 'Football' },
+    //   { label: 'Countries' },
+    //   { label: 'Spain' },
+    //   { label: 'F.C. Barcelona' },
+    //   { label: 'Squad' },
+    //   {
+    //     label: 'Lionel Messi',
+    //     url: 'https://en.wikipedia.org/wiki/Lionel_Messi',
+    //   },
+    // ];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getMenu();
+  }
+
+  getMenu(): void {
+    this.menuService.getLayerMenu().subscribe((res) => {
+      if (res) {
+        let menu = [];
+        menu = Object.entries(res).map(([key, value]) => {
+          return {
+            label: key,
+            icon: 'pi pi-fw pi-cog',
+            items: this.createMenu(value),
+          };
+        });
+        this.items = this.items.concat(menu);
+        console.log('menu', menu);
+      }
+    });
+  }
+
+  createMenu(menuList: (Menu | ChildMenu)[]): MenuItem[] {
+    console.log(menuList);
+
+    return menuList.map((item: Menu | ChildMenu) => {
+      const labelKey = Object.keys(item)[0];
+      console.log(labelKey);
+      console.log((item as any)[labelKey]);
+      if (item && 'child' in item) {
+        return {
+          label: labelKey ? (item as any)[labelKey] : 'labelKey',
+          icon: 'pi pi-fw pi-cog',
+          items: this.createMenu(item.child),
+        };
+      }
+      return {
+        label: labelKey ? (item as any)[labelKey] : 'labelKey',
+        icon: 'pi pi-fw pi-cog',
+      };
+    });
+  }
 }
