@@ -1,0 +1,25 @@
+.box {
+  background-color: #2a323d;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+h3.active {
+  color: #8dd0ff;
+}
+
+.active {
+  .box {
+    background-color: #536073;
+  }
+}
+
+.title {
+  h3 {
+    margin-left: 10px;
+  }
+  padding: 5px;
+}

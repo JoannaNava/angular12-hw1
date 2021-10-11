@@ -82,11 +82,24 @@ export class LayoutComponent implements OnInit {
         ],
       },
       {
-        label: 'Edit',
+        label: 'JS 小知識',
         icon: 'pi pi-fw pi-pencil',
         items: [
-          { label: 'Delete', icon: 'pi pi-fw pi-trash' },
-          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' },
+          {
+            label: '傳值傳址',
+            icon: 'pi pi-fw pi-trash',
+            routerLink: '/example1',
+          },
+          {
+            label: '深淺複製',
+            icon: 'pi pi-fw pi-refresh',
+            routerLink: '/example2',
+          },
+          {
+            label: '閉包',
+            icon: 'pi pi-fw pi-search',
+            routerLink: '/example3',
+          },
         ],
       },
       {

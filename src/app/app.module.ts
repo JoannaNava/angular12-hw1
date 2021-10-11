@@ -9,12 +9,14 @@ import { QuestionComponent } from '@view/question/question.component';
 import { TableComponent } from '@view/table/table.component';
 import { PanelComponent } from '@view/panel/panel.component';
 import { DialogService } from 'primeng/dynamicdialog';
+import { ExampleComponent } from './view/example/example.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     TableComponent,
     PanelComponent,
+    ExampleComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,20 +12,23 @@
     <div class="topbar">
       <div class="w-100 p-d-flex p-align-center p-justify-between">
         <button
-        pButton
-        type="button"
-        class="p-button-outlined p-button-primary"
-        icon="pi pi-bars"
-        (click)="isMenuOpen = !isMenuOpen"
-      ></button>
+          pButton
+          type="button"
+          class="p-button-outlined p-button-primary"
+          icon="pi pi-bars"
+          (click)="isMenuOpen = !isMenuOpen"
+        ></button>
         <h3>員工姓名 (員工編號) 剩餘時間 09:42</h3>
       </div>
     </div>
 
-    <div class="breadcrumb p-d-flex p-dir-row p-justify-start">
-      <span *ngFor="let item of breadcrumbItems" [routerLink]="item.url">{{
-        item.label
-      }}</span>
+    <div class="breadcrumb p-d-flex p-dir-row p-justify-start p-align-center">
+      <span
+        class="line-h-1"
+        *ngFor="let item of breadcrumbItems"
+        [routerLink]="item.url"
+        >{{ item.label }}</span
+      >
     </div>
     <!-- <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb> -->
     <div class="border-page">
