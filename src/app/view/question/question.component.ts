@@ -19,7 +19,6 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestion();
     this.getDropdown();
-    this.cloneExample();
   }
 
   getDropdown(): void {
@@ -54,66 +53,5 @@ export class QuestionComponent implements OnInit {
           item.answer.indexOf(this.keyword) > -1
       );
     }
-  }
-  // 深淺複製範例
-  cloneExample(): void {
-    const example = {
-      item: {
-        item: {
-          item: {
-            item: {
-              item: {
-                item: {
-                  a: '1',
-                },
-              },
-            },
-          },
-        },
-        a: '1',
-      },
-    };
-
-    // 淺複製
-    const obj1 = Object.assign({}, example);
-    obj1.item.item.item.item.item.item.a = '2';
-    obj1.item.a = '2';
-    // 深複製
-    const obj2 = JSON.parse(JSON.stringify(example));
-    obj2.item.item.item.item.item.item.a = '3';
-    obj2.item.a = '3';
-    console.log('深淺複製範例: ');
-    console.log(example);
-    console.log(obj2);
-
-    // 傳值傳址範例
-    var val1 = 'apple';
-    var val2 = val1;
-    val2 = 'pineapple';
-
-    const val3 = {
-      value: 'apple',
-    };
-    const val4 = val3;
-    //val4.value = 'pineapple';
-    console.log('傳值傳址範例: ');
-    console.log(val1);
-    console.log(val2);
-    console.log(val3);
-    console.log(val4);
-
-    // 閉包
-    const func = function () {
-      var count = 1;
-      return function (x: number) {
-        return count + x;
-      };
-    };
-
-    const addcount = func();
-
-    console.log('add', addcount(1));
-    console.log('add', addcount(2));
-    console.log('add', addcount(3));
   }
 }
